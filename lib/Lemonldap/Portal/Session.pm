@@ -27,7 +27,7 @@ our @EXPORT = qw(
 
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # Preloaded methods go here.
 
@@ -137,7 +137,13 @@ sub analyse_multi {
             my @t = @{ $_->[1] };
             $cp = $#t + 1;
 
-        }
+        }   
+	else {  
+      # correction bug multi on one line 
+            my @t;
+	    $t[0] =  $_->[1] ;
+	    $cp = $#t + 1;
+	}
     }
     my $i;
     my @tchaine;
